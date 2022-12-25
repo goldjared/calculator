@@ -18,3 +18,8 @@ function operate(op, x, y) {
     // const operate = op;
     return op(x, y);
 }
+
+function display() {
+    const display = document.querySelector('.display');
+    
+}
