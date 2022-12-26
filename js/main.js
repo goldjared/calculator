@@ -22,21 +22,23 @@ function divide(x, y) {
 }
 
 function operate(x, op, y) {
-    console.log(x, op, y);
-    console.log(typeof x, typeof op, typeof y);
-    console.log('op is',op);
      switch (op) {
-        case (' + '): 
+        case ('+'): 
             op = add;
             break;
+        case ('-'): 
+            op = subtract;
+            break;
+        case ('*'): 
+            op = multiply;
+            break;
+        case ('/'): 
+            op = divide;
+            break;
      }
-     console.log(op);
-    //  else if(op = ' * ') op = multiply;
-    //  else if(op = ' / ') op = divide;
-    // if(op = ' * ') op = 'multiply';
-    // if(op = ' / ') op = 'divide';
+     memory['numArray0'] = op(parseInt(x), parseInt(y));
+     displayScreen.textContent = memory['numArray0'];
     console.log(op(parseInt(x), parseInt(y)));
-    console.log(op);
     //let sum be the only value in the array, display the array.
     
     
@@ -45,24 +47,13 @@ function operate(x, op, y) {
 
 
 
-function display(value) {
-    
+function display(value) { 
     memory['numArray0'].push(value);
     memory['numArray1'] = memory['numArray0'].join('').split(' ');
-    // console.log(equation);
-    // if(!Number.isInteger(value)) {
-    //     let x = memory['numArray0'].join('');
-    //     console.log(x);
-    // }
-    
-    // if(value != Number)
-    
     displayScreen.textContent = memory['numArray0'].join(''); //need to convert numarray to string
-    
 }
 
 function reset() {
     memory['numArray0'] = [];
     displayScreen.textContent = '';
-
 }
