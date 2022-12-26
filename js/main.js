@@ -66,15 +66,3 @@ function reset() {
     displayScreen.textContent = '';
 
 }
-
-/*
-click button, put number on display, click op button, put op on display, hit
-another button, add it to the display. 
-press =, calculates selected numbers (these numbers and the variable need to be added 
-    somewhere and saved.. an object?) 
-    replaces display with answer. replaces saved numbers with answer
-    so you can then call anotehr operator and numbers to add on to answ
-    CLEAR will completely reset everything!
-
-
-    */
