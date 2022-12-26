@@ -28,18 +28,20 @@ html, body {
 .calc-inner {
     background-color: red;
     height: 450px;
-    width: 400px;
+    width: 300px;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-auto-flow: row dense;
+    gap: 5px;
 }
 
 .grid-button {
     height: 40px;
     color: blueviolet;
+    border-radius: 5px;
 }
 
 input[value=clear] {
