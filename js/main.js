@@ -36,6 +36,14 @@ function operate(x, op, y) {
             break;
      }
     memory['numArray0'] = [op(parseFloat(x), parseFloat(y))];
+    if((memory['numArray0']) % 1 != 0) {
+        memory['numArray0'] = memory['numArray0'].map(function(value) {
+            return Number(value.toFixed(2));
+            
+        });
+
+    }
+    console.log(memory['numArray0'])
     memory['numArray1'] = [];
     displayScreen.textContent = memory['numArray0'];
     }
