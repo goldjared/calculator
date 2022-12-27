@@ -2,7 +2,6 @@ const displayScreen = document.querySelector('.display');
 const memory = {
     numArray0: [],
     numArray1: [],
-    numArray2: []
 };
 
 function add(x, y) {
@@ -36,13 +35,10 @@ function operate(x, op, y) {
             op = divide;
             break;
      }
-     memory['numArray0'] = op(parseInt(x), parseInt(y));
-     displayScreen.textContent = memory['numArray0'];
-    console.log(op(parseInt(x), parseInt(y)));
-    //let sum be the only value in the array, display the array.
-    
-    
-}
+    memory['numArray0'] = [op(parseFloat(x), parseFloat(y))];
+    memory['numArray1'] = [];
+    displayScreen.textContent = memory['numArray0'];
+    }
 
 
 
