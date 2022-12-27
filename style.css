@@ -1,12 +1,12 @@
 html, body {
     background-color: black;
-    color: yellow;
+    color: rgb(12, 252, 116);
 }
 
 * {
     margin: 0;
     padding: 0;
-    border: 1px solid green;
+    /* border: 1px solid green; */
 }
 
 .main-container {
@@ -14,45 +14,86 @@ html, body {
     height: 100vh;
     width: auto;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
-.calc-outer {
-    background-color: beige;
-    height: 500px;
-    width: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.title {
+    color: white;
+    font-size: 100px;
 }
+
 .calc-inner {
-    background-color: red;
+    background-color: rgb(136, 150, 255);
     height: 450px;
-    width: 300px;
+    width: 350px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.calc-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+}
+
+.calc-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+    font-weight: 800;
+}
+
+.display {
+    background-color: rgb(171, 171, 171);
+    height: 75px;
+    font-size: 50px;
+    color: black; 
+    font-family: VT323, sans-serif;
+    align-items: center;
+    display: flex;
+
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-auto-flow: row dense;
-    gap: 5px;
+    
+}
+
+input {
+    height: 50px;
+    color: blueviolet;
+    border-radius: 5px;
+    font-weight: 700;
 }
 
 .grid-button {
-    height: 40px;
-    color: blueviolet;
-    border-radius: 5px;
+    background-color: rgb(218, 218, 218);
 }
 
-input[value=clear] {
+.grid-button-s {
+    background-color: rgb(253, 149, 149);
+}
+
+
+
+.grid-button:hover, 
+.grid-button-s:hover {
+    background-color: rgb(255, 248, 150);
+}
+
+.grid-button:active, 
+.grid-button-s:active{
+    background-color: greenyellow;
+}
+
+input[value=CLEAR] {
     grid-column: auto / span 3;
     /* grid-row: auto / span 2; */
-    color: blueviolet;
-}
-
-.display {
-    height: 75px;
-    font-size: 50px;
-    text-align: center;
-    
+    background-color: rgb(245, 74, 131);
 }

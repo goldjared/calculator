@@ -46,7 +46,7 @@ function operate(x, op, y) {
 function display(value) { 
     memory['numArray0'].push(value);
     memory['numArray1'] = memory['numArray0'].join('').split(' ');
-    displayScreen.textContent = memory['numArray0'].join(''); //need to convert numarray to string
+    displayScreen.textContent = memory['numArray1'].join(''); //need to convert numarray to string
 }
 
 function reset() {
