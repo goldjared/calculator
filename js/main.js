@@ -34,19 +34,21 @@ function operate(x, op, y) {
         case ('/'): 
             op = divide;
             break;
-     }
+    }
+
     memory['numArray0'] = [op(parseFloat(x), parseFloat(y))];
+    
     if((memory['numArray0']) % 1 != 0) {
         memory['numArray0'] = memory['numArray0'].map(function(value) {
             return Number(value.toFixed(2));
-            
         });
-
     }
-    console.log(memory['numArray0'])
+
     memory['numArray1'] = [];
     displayScreen.textContent = memory['numArray0'];
-    }
+
+    disableDotButton('enable');
+}
 
 
 
@@ -54,10 +56,28 @@ function operate(x, op, y) {
 function display(value) { 
     memory['numArray0'].push(value);
     memory['numArray1'] = memory['numArray0'].join('').split(' ');
-    displayScreen.textContent = memory['numArray1'].join(''); //need to convert numarray to string
+    displayScreen.textContent = memory['numArray1'].join('');
+    if(value === '.') disableDotButton('disable');
+    if(memory['numArray1'].length > 1) {
+        disableDotButton('enable');
+        if(memory['numArray1'][2].includes('.')) disableDotButton('disable');
+    }
+}
+
+function disableDotButton(toggle) {
+    if(toggle === 'disable') {
+        const dotButton = document.getElementById('grid-button-dot');
+        dotButton.style.backgroundColor = '#adff2f';
+        dotButton.disabled = true;
+    } else if (toggle === 'enable') {
+        const dotButton = document.getElementById('grid-button-dot');
+        dotButton.style.backgroundColor = null;
+        dotButton.disabled = false;
+    }
 }
 
 function reset() {
     memory['numArray0'] = [];
     displayScreen.textContent = '';
+    disableDotButton('enable');
 }

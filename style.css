@@ -76,19 +76,22 @@ input {
     background-color: rgb(218, 218, 218);
 }
 
-.grid-button-s {
+.grid-button-s, 
+#grid-button-dot {
     background-color: rgb(253, 149, 149);
 }
 
 
 
 .grid-button:hover, 
-.grid-button-s:hover {
+.grid-button-s:hover,
+#grid-button-dot:hover {
     background-color: rgb(255, 248, 150);
 }
 
 .grid-button:active, 
-.grid-button-s:active{
+.grid-button-s:active,
+#grid-button-dot:active{
     background-color: greenyellow;
 }
 
@@ -96,4 +99,8 @@ input[value=CLEAR] {
     grid-column: auto / span 3;
     /* grid-row: auto / span 2; */
     background-color: rgb(245, 74, 131);
+}
+
+.locked {
+    background-color: red;
 }
