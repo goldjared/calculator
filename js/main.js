@@ -2,6 +2,7 @@ const displayScreen = document.querySelector('.display');
 const memory = {
     numArray0: [],
     numArray1: [],
+    operatorArray0: [],
 };
 
 function add(x, y) {
@@ -43,10 +44,17 @@ function operate(x, op, y) {
             return Number(value.toFixed(2));
         });
     }
-
-    memory['numArray1'] = [];
+    
+    
     displayScreen.textContent = memory['numArray0'];
-
+    memory['numArray1'] = [];
+    if(memory['operatorArray0'] != []) {
+        console.log('it werks');
+        // displayScreen.textContent = memory['numArray0'] memory['operatorArray0'];
+        memory['numArray0'] = (memory['numArray0'] + memory['operatorArray0']).split(' ');
+        displayScreen.textContent = memory['numArray0'].join('');
+        memory['numArray1'] = memory['numArray0'];
+    }
     disableDotButton('enable');
 }
 
@@ -61,6 +69,10 @@ function display(value) {
     if(memory['numArray1'].length > 1) {
         disableDotButton('enable');
         if(memory['numArray1'][2].includes('.')) disableDotButton('disable');
+    }
+    if(memory['numArray1'][3]) {
+        memory['operatorArray0'] = ` ${memory['numArray1'][3]} `;
+        operate(...memory['numArray1']);
     }
 }
 
