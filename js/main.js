@@ -49,7 +49,7 @@ function operate(x, op, y) {
     displayScreen.textContent = memory['numArray0'];
     memory['numArray1'] = [];
     if(memory['operatorArray0'] != []) {
-        console.log('it werks');
+        console.log('it works');
         // displayScreen.textContent = memory['numArray0'] memory['operatorArray0'];
         memory['numArray0'] = (memory['numArray0'] + memory['operatorArray0']).split(' ');
         displayScreen.textContent = memory['numArray0'].join('');
@@ -63,6 +63,7 @@ function operate(x, op, y) {
 
 function display(value) { 
     memory['numArray0'].push(value);
+
     memory['numArray1'] = memory['numArray0'].join('').split(' ');
     displayScreen.textContent = memory['numArray1'].join('');
     if(value === '.') disableDotButton('disable');
