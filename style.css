@@ -6,7 +6,7 @@ html, body {
 * {
     margin: 0;
     padding: 0;
-    /* border: 1px solid green; */
+    border: 1px solid green;
 }
 
 .main-container {
@@ -47,6 +47,10 @@ html, body {
     font-weight: 800;
 }
 
+.display-one {
+    background-color: red;
+}
+
 .display {
     background-color: rgb(171, 171, 171);
     height: 75px;
@@ -56,6 +60,10 @@ html, body {
     align-items: center;
     display: flex;
 
+}
+
+.display-one {
+    background-color: red;
 }
 
 .grid-container {
@@ -92,15 +100,11 @@ input {
 .grid-button:active, 
 .grid-button-s:active,
 #grid-button-dot:active{
-    background-color: greenyellow;
+    background-color: #adff2f;
 }
 
 input[value=CLEAR] {
     grid-column: auto / span 3;
     /* grid-row: auto / span 2; */
     background-color: rgb(245, 74, 131);
-}
-
-.locked {
-    background-color: red;
 }

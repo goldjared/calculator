@@ -15,9 +15,12 @@
         <div class="calc-inner">
             <div class="calc-header">
                 <div class="calc-title">Mas Calculina</div>
-                <div class="calc-version">v1.0</div>
+                <div class="calc-version">v1.1</div>
             </div>
-            <div class="display"></div>
+            <div class="display">
+                <div class="display-one">one</div>
+                <div class="display-two">two</div>
+            </div>
             <div class="grid-container">
                 <input type="button" value="CLEAR" class="grid-button" onclick="reset()">
                 <input type="button" value="/" class="grid-button-s" onclick="display(' / ')">
@@ -36,7 +39,7 @@
                 <input type="button" value="0" class="grid-button" onclick="display(0)">
                 <input type="button" value="." id="grid-button-dot" onclick="display('.')">
                 <input type="button" value="(-)" class="grid-button-s" onclick="display('-')">
-                <input type="button" value="=" class="grid-button-s" onclick="operate(...memory['numArray1'])">
+                <input type="button" value="=" class="grid-button-s" onclick="operate(...memory['workingArray'])">
             </div>  
             <div class="calc-footer">Built by Jared</div>  
         </div>    
