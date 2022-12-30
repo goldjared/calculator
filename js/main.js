@@ -1,5 +1,3 @@
-
-
 operations();
 function operations() {
     const memory = {
@@ -16,68 +14,55 @@ function operations() {
                 let x = parseFloat(memory['workingArray2'][0]);
                 let op = memory['workingArray2'][1];
                 let y = parseFloat(memory['workingArray1'][0]);
-                console.log(typeof x);
-                console.log(op);
-                console.log(typeof y);
-                console.log(operate(x, op, y));
+                memory['workingArray'] = [operate(x, op, y)];
+                displayBottom(memory['workingArray']);//experimenting with changing this array no.,
+                //it changes how to isNaN reacts
                 return;
             }
+
             if(isNaN(button.value)) {
                 (memory['workingArray1']).push(button.value);
                 memory['workingArray2'] = memory['workingArray1'];
-                console.log(memory['workingArray2']);
+                displayTop((memory['workingArray2']).join(''));
                 
                 memory['workingArray'] = [];
-                console.log(memory['workingArray']);
                 return;
             }
+
             (memory['workingArray']).push(button.value);
-            memory['workingArray1'] = (memory['workingArray']).join('').split(' ')
-            console.log(memory['workingArray1']);
-            if(memory['workingArray2'].length > 1 && memory['workingArray1'] 
-            != [] && isNaN(button.value)) {
-                // operate(memory['workingArray2'], memory['workingArray1'])
-                let x = memory['workingArray2'][0];
-                console.log(x);
-            }
+            memory['workingArray1'] = (memory['workingArray']).join('').split(' ');
+            // console.log(memory['workingArray']);
             
+
+            if(memory['workingArray2'] != []) return displayTop((memory['workingArray2']).join('') + (memory['workingArray1']));
+            displayTop(memory['workingArray1']);
         });
     });
+    function displayTop(x) {
+        const displayTop = document.querySelector('.display-one');
+        displayTop.textContent = x;
+
+        
+    }
+    function displayBottom(x) {
+        const displayTop = document.querySelector('.display-two');
+        displayTop.textContent = x;
+    }
     
     function operate(x, op, y) {
         switch (op) {
             case ('+'): 
-                op = add;
-                break;
+                return x + y;
             case ('-'): 
-                op = subtract; // could i use returns
-                break;
+                return x - y;
             case ('*'): 
-                op = multiply;
-                break;
+                return x * y;
             case ('/'): 
-                op = divide;
-                break;
+                return x / y;
         }
 
-        return op(x, y);
+        
     }
-}
-
-function add(x, y) {
-    return x + y;
-}
-
-function subtract(x, y) {
-    return x - y;
-}
-
-function multiply(x, y) {
-    return x * y;
-}
-
-function divide(x, y) {
-    return x / y;
 }
         
 
