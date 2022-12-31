@@ -28,16 +28,20 @@ function operations() {
 
             if(num1 != '' && num2 != '' && ops != '' && button.value === '=') {
                 num1 = operate(parseFloat(num1), parseFloat(num2), ops);
+                num1 = num1.toFixed(2);
                 displayBottom(num1);
                 num2 = '';
                 ops = '';
                 disableDotButton('enable');
+                
                 console.log('5th if ' +num1);
+                
                 return;
             }
 
             if(ops != '' && isNaN(button.value) && button.value != '.') {
                 num1 = operate(parseFloat(num1), parseFloat(num2), ops);
+                num1 = num1.toFixed(2);
                 displayBottom(num1);
                 ops = button.value;
                 displayTop((num1+ops));
@@ -69,7 +73,7 @@ function operations() {
         const displayTop = document.querySelector('.display-one');
         displayTop.textContent = x;
     }
-    
+
     function displayBottom(x) {
         const displayTop = document.querySelector('.display-two');
         displayTop.textContent = x;
