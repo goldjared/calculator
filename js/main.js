@@ -7,6 +7,7 @@ function operations() {
     const buttons = document.querySelectorAll('input[type="button"]');
     buttons.forEach(function (button) {
         button.addEventListener('click', function() {
+            if(button.value === '(-)') button.value = '-';
 
             if(button.value === 'clear') return reset();
 
@@ -28,7 +29,7 @@ function operations() {
 
             if(num1 != '' && num2 != '' && ops != '' && button.value === '=') {
                 num1 = operate(parseFloat(num1), parseFloat(num2), ops);
-                num1 = num1.toFixed(2);
+                num1 = isDecimal(num1);
                 displayBottom(num1);
                 num2 = '';
                 ops = '';
@@ -41,7 +42,7 @@ function operations() {
 
             if(ops != '' && isNaN(button.value) && button.value != '.') {
                 num1 = operate(parseFloat(num1), parseFloat(num2), ops);
-                num1 = num1.toFixed(2);
+                num1 = isDecimal(num1);
                 displayBottom(num1);
                 ops = button.value;
                 displayTop((num1+ops));
@@ -89,6 +90,10 @@ function operations() {
             dotButton.style.backgroundColor = null;
             dotButton.disabled = false;
         }
+    }
+
+    function isDecimal(x) {
+         return (x % 1 != 0) ? x = x.toFixed(2) : x;
     }
 
     function reset() {
