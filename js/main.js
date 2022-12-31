@@ -1,44 +1,57 @@
 operations();
 function operations() {
-    const memory = {
-        workingArray: [],
-        workingArray1: [],
-        workingArray2: [],
-    };
+    let num1 = '';
+    let num2 = '';
+    let ops = '';
     
     const buttons = document.querySelectorAll('input[type="button"]');
     buttons.forEach(function (button) {
         button.addEventListener('click', function() {
-            if((memory['workingArray2'].length > 1 && memory['workingArray1'] 
-            != [] && isNaN(button.value)) || button.value === '=') {
-                let x = parseFloat(memory['workingArray2'][0]);
-                let op = memory['workingArray2'][1];
-                let y = parseFloat(memory['workingArray1'][0]);
-                memory['workingArray'] = [operate(x, op, y)];
-                displayBottom(memory['workingArray']);//experimenting with changing this array no.,
-                //it changes how to isNaN reacts
-                return;
-            }
 
-            if(isNaN(button.value)) {
-                (memory['workingArray1']).push(button.value);
-                memory['workingArray2'] = memory['workingArray1'];
-                displayTop((memory['workingArray2']).join(''));
-                
-                memory['workingArray'] = [];
-                return;
-            }
-
-            (memory['workingArray']).push(button.value);
-            memory['workingArray1'] = (memory['workingArray']).join('').split(' ');
-            // console.log(memory['workingArray']);
+            if(button.value === 'clear') return reset();
             
+            if(ops === '' && !isNaN(button.value)) {
+                num1 += button.value;
+                displayTop(num1);
+                console.log('1st if ' +num1);
+            }
 
-            if(memory['workingArray2'] != []) return displayTop((memory['workingArray2']).join('') + (memory['workingArray1']));
-            displayTop(memory['workingArray1']);
-        });
-    });
-    function displayTop(x) {
+            if(num1 != '' && num2 != '' && ops != '' && button.value === '=') {
+                num1 = operate(parseFloat(num1), parseFloat(num2), ops);
+                displayBottom(num1);
+                num2 = '';
+                ops = '';
+                console.log('5th if ' +num1);
+                return;
+            }
+
+            if(ops != '' && isNaN(button.value)) {
+                num1 = operate(parseFloat(num1), parseFloat(num2), ops);
+                displayBottom(num1);
+                ops = button.value;
+                displayTop((num1+ops));
+                num2 = '';
+                console.log('2nd if ' +num1);
+                return;
+            }
+
+            if(isNaN(button.value) && button.value != '=') {
+                ops = button.value;
+                displayTop((num1+ops));
+                console.log('3rd if ' +ops);
+                return;
+            }
+            
+            if(ops != '' && button.value != '=') {
+                num2 += button.value;
+                displayTop((num1+ops+num2));
+                console.log('4th if ' +num2);
+                return;
+            }
+         });
+     });
+
+    function displayTop(...x) {
         const displayTop = document.querySelector('.display-one');
         displayTop.textContent = x;
 
@@ -48,9 +61,17 @@ function operations() {
         const displayTop = document.querySelector('.display-two');
         displayTop.textContent = x;
     }
+
+    function reset() {
+        num1 = '';
+        num2 = '';
+        ops = '';
+        displayTop('');
+        displayBottom('');
+    }
     
-    function operate(x, op, y) {
-        switch (op) {
+    function operate(x, y, ops) {
+        switch (ops) {
             case ('+'): 
                 return x + y;
             case ('-'): 
@@ -60,9 +81,9 @@ function operations() {
             case ('/'): 
                 return x / y;
         }
-
-        
     }
 }
+
+
         
 
