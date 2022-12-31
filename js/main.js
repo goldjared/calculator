@@ -7,8 +7,7 @@ function operations() {
     const buttons = document.querySelectorAll('input[type="button"]');
     buttons.forEach(function (button) {
         button.addEventListener('click', function() {
-            if(button.value === '(-)') button.value = '-';
-
+            console.log(button.value);
             if(button.value === 'clear') return reset();
 
             if(ops === '/' && num2 === '0' && isNaN(button.value)) {
@@ -22,6 +21,7 @@ function operations() {
             if(ops === '' && (!isNaN(button.value) || button.value === '.')) {
                 if(ops === '' && button.value === '.') disableDotButton('disable');
                 num1 += button.value;
+                
                 displayTop(num1);
                 console.log('1st if ' +num1);
                 
@@ -52,7 +52,7 @@ function operations() {
                 return;
             }
 
-            if(isNaN(button.value) && button.value != '=' && button.value != '.') {
+            if(isNaN(button.value) && button.value != '=' && button.value != '.' && button.value != '(-)') {
                 ops = button.value;
                 displayTop((num1+ops));
                 disableDotButton('enable');
