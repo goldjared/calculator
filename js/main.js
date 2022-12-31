@@ -9,7 +9,15 @@ function operations() {
         button.addEventListener('click', function() {
 
             if(button.value === 'clear') return reset();
-            
+
+            if(ops === '/' && num2 === '0' && isNaN(button.value)) {
+                displayTop('ERROR');
+                num1 = '';
+                num2 = '';
+                ops = '';
+                return;
+            }
+
             if(ops === '' && !isNaN(button.value)) {
                 num1 += button.value;
                 displayTop(num1);
